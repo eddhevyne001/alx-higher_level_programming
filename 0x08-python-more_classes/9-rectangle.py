@@ -1,48 +1,106 @@
 #!/usr/bin/python3
-"""
-defines a rectangle
+"""9-rectangle, built for Python project 0x08 task.
 """
 
 
 class Rectangle:
-    """rectangle class"""
+    """Class for printing or computation of dimensions of a rectangle.
 
+    Takes in args for width and height of a rectangle, and contains methods
+    for calculation of the area or perimeter, and for creating a square by
+    making a new instance of equal sides. __str__, __repr__, and __del__
+    fuctionality defined below.
+
+    Attributes:
+        number_of_instances (int): counter incrementing for every
+            instantiation, and decrementing for every instance deletion.
+        print_symbol (str): single character to be used in assembling string
+            representation of rectangle
+
+    """
     number_of_instances = 0
-    print_symbol = "#"
+    print_symbol = '#'
 
     def __init__(self, width=0, height=0):
-        """instantiation"""
-        if not isinstance(width, int):
-            raise TypeError("width must be an integer")
-        if width < 0:
-            raise ValueError("width must be >= 0")
-        if not isinstance(height, int):
-            raise TypeError("height must be an integer")
-        if height < 0:
-            raise ValueError("height must be >= 0")
-        self.__width = width
-        self.__height = height
-        Rectangle.number_of_instances += 1
+        """Increments `number_of_instances` and calls setters for `__width`
+        and `__height`.
 
-    @classmethod
-    def square(cls, size=0):
-        """returns a new Rectangle instance with width == height == size"""
-        return cls(size, size)
+        Args:
+            width (int): horizontal dimension of rectangle, defaults to 0
+            height (int): vertical dimension of rectangle, defaults to 0
+
+        """
+        type(self).number_of_instances += 1
+        # attribute assigment here engages setters defined below
+        self.width = width
+        self.height = height
 
     @property
     def width(self):
-        """retrieve width"""
+        """__width getter.
+
+        Returns:
+            __width (int): horizontal dimension of rectangle
+
+        """
         return self.__width
 
     @width.setter
     def width(self, value):
-        """sets width"""
-        if isinstance(value, int):
-            raise TypeError("width must be an integer")
-        if value < 0:
-            raise ValueError("width must be >= 0")
+        """Args:
+            value (int): horizontal dimension of rectangle
+
+        Attributes:
+            __width (int): horizontal dimension of rectangle
+
+        Raises:
+            TypeError: If `value` is not an int.
+            ValueError: If `value` is less than 0.
+
+        """
+        if type(value) is not int:
+            raise TypeError('width must be an integer')
+        elif value < 0:
+            raise ValueError('width must be >= 0')
         self.__width = value
 
     @property
     def height(self):
-        """retrieve height"""
+        """__height getter.
+
+        Returns:
+            __height (int): vertical dimension of rectangle
+
+        """
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """Args:
+            value (int): vertical dimension of rectangle
+
+        Attributes:
+            __height (int): vertical dimension of rectangle
+
+        Raises:
+            TypeError: If `value` is not an int.
+            ValueError: If `value` is less than 0.
+
+        """
+        if type(value) is not int:
+            raise TypeError('height must be an integer')
+        if value < 0:
+            raise ValueError('height must be >= 0')
+        self.__height = value
+
+    def area(self):
+        """Returns area of a rectangle of a given `width` and `height`.
+
+        Attributes:
+            __width (int): horizontal dimension of rectangle
+            __height (int): vertical dimension of rectangle
+
+        Returns:
+            Area of rectangle: __width * __height
+
+        """
