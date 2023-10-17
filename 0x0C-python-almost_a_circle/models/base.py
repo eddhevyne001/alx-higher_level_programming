@@ -1,4 +1,3 @@
-base.py
 #!/usr/bin/python3
 
 """Defines a base model class."""
@@ -186,4 +185,4 @@ class Base:
                 turt.left(90)
             turt.hideturtle()
 
-         turtle.exitonclick()
+        turtle.exitonclick()
