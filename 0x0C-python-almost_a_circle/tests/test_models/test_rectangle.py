@@ -1,6 +1,6 @@
 test_rectangle.py
 #!/usr/bin/python3
-# test_rectangle.
+# test_rectangle.py
 """Defines unittests for models/rectangle.py.
 
 Unittest classes:
